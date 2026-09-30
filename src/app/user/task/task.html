@@ -1,0 +1,29 @@
+<h2>Tasks</h2>
+
+<ul>
+  @for (task of tasksList; track $index) {
+    <li>
+      <p>{{ task.name }} - {{ task.status }}</p>
+
+    </li>
+  }
+</ul>
+
+
+<button (click)="agregarTask()" >Agregar Task</button>
+
+
+@if(showAdd){
+  <h3>Agregar</h3>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+    <label for="name">Name:</label>
+    <input id="name" type="text" formControlName="name" />
+
+    <label for="status">status:</label>
+    <input id="status" type="text" formControlName="status" />
+
+    <button type="submit" [disabled]="form.invalid">Enviar</button>
+  </form>
+
+}
